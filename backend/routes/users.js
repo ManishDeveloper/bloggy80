@@ -4,7 +4,23 @@ const {check,validationResult} = require("express-validator");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const Users = require("../models/Users");
+const auth = require("../middleware/auth");
 
+
+//@route    POST /api/users
+//@desc     Register user
+//@access   Public
+router.get('/auth',auth,async (req,res)=>{
+    try {
+      let user = await Users.findById(req.user.id).select('-password');
+      
+      return res.status(200).json(user);
+      
+    } catch (error) {
+        console.log(error.message);
+        return res.status(500).json({error:'Server Error'})
+    }
+})
 //@route    POST /api/users
 //@desc     Register user
 //@access   Public
