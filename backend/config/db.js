@@ -5,7 +5,8 @@ require("dotenv").config();
 mongoose.connect(process.env.MONGO_LOCAL_URI,{
     useCreateIndex:true,
     useNewUrlParser:true,
-    useUnifiedTopology:true
+    useUnifiedTopology:true,
+    useFindAndModify: false
 })
 .then(()=>{console.log('db connected..')})
 .catch((err)=>console.log(err));
