@@ -3,6 +3,7 @@ const router = express.Router();
 const Posts = require("../models/Posts");
 const multer = require("multer");
 const auth = require("../middleware/auth");
+const slugify = require("slugify");
 const mongoose = require("mongoose");
 
 //@route    POST /api/posts/create
@@ -13,7 +14,7 @@ let storage = multer.diskStorage({
       cb(null, '../frontend/public/images')
     },
     filename: function (req, file, cb) {
-      cb(null, Date.now() + file.originalname)
+      cb(null, slugify(Date.now() + file.originalname,{replacement: '-'}))
     }
   });
    
@@ -23,7 +24,9 @@ router.post('/create',[upload.single('image'),auth],async (req,res)=>{
     try {
         let {title,description} = req.body;
 
-        let newPosts = new Posts({user:req.user.id,title,description,image:req.file.filename});
+        let imageSlugify = slugify(req.file.filename,{replacement: '-'});
+
+        let newPosts = new Posts({user:req.user.id,title,description,image:imageSlugify});
 
         await newPosts.save();
         return res.status(201).json(newPosts);
