@@ -8,3 +8,5 @@ export const LOGIN_FAIL = 'LOGIN_FAIL';
 export const REGISTER_FAIL = 'REGISTER_FAIL';
 export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
 export const LOGOUT = 'LOGOUT';
+export const POSTS_LOADING = 'POSTS_LOADING';
+export const POSTS_LOADAD = 'POSTS_LOADAD';

@@ -39,7 +39,7 @@ router.post('/create',[upload.single('image'),auth],async (req,res)=>{
 //@access   Public
 router.get('/', async (req,res)=>{
     try {
-        let getPosts = await Posts.find();
+        let getPosts = await Posts.find().populate('user',['name']);
 
         return res.status(200).json(getPosts);
 

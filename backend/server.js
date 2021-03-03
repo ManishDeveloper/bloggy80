@@ -15,7 +15,7 @@ app.use('/api/users',require("./routes/users"));
 app.use('/api/posts',require("./routes/posts"));
 
 //Deployment
-if(process.env.NODE_ENV === 'production'){
+if(process.env.NODE_ENV === 'PRODUCTION'){
     app.use(express.static(path.join(__dirname,'/frontend/build')));
 
     app.get('*', (req,res)=>{
