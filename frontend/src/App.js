@@ -5,6 +5,8 @@ import Home from './components/Home';
 import Logout from './components/Logout';
 import Register from './components/Register';
 import {getPosts} from './redux/actions/post';
+import SinglePost from './components/SinglePost';
+import UserPosts from './components/UserPosts';
 import setAuthToken from './utils/setAuthToken';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import store from './store';
@@ -27,6 +29,8 @@ function App() {
         <Route exact path="/" component={Home}  />
         <PrivateRoute exact path="/logout" component={Logout}  />
         <Route exact path="/login" component={Login} />
+        <Route exact path="/post/:id" component={SinglePost} />
+        <Route exact path="/user/post/:id/:name" component={UserPosts} />
         <Route exact path="/Register" component={Register} />
       </Switch>
     </>

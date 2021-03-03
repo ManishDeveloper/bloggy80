@@ -1,3 +1,17 @@
-.post-box {
-    border:1px solid #bcbcbc;
+
+.post-image{
+    max-width: 100%;
+    border: 0.5px solid #bcbcbc;
+}
+
+.post-title{
+    font-size: 22px;
+}
+
+.post-author{
+    color:#555;
+}
+
+.post-detail-box{
+    padding-left:20px;
 }

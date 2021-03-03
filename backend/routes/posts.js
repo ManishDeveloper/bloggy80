@@ -10,7 +10,7 @@ const mongoose = require("mongoose");
 //@access   Private
 let storage = multer.diskStorage({
     destination: function (req, file, cb) {
-      cb(null, '../frontend/src/images')
+      cb(null, '../frontend/public/images')
     },
     filename: function (req, file, cb) {
       cb(null, Date.now() + file.originalname)
