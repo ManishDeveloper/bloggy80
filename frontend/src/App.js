@@ -4,6 +4,7 @@ import Login from './components/Login';
 import Home from './components/Home';
 import Logout from './components/Logout';
 import Register from './components/Register';
+import {getPosts} from './redux/actions/post';
 import setAuthToken from './utils/setAuthToken';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import store from './store';
@@ -15,6 +16,7 @@ function App() {
       if(localStorage.token){
         setAuthToken(localStorage.token);
       }
+      store.dispatch(getPosts());
       store.dispatch(loadUser());
   },[])
   return (
@@ -22,7 +24,7 @@ function App() {
     <>
       <Menubar />
       <Switch>
-        <PrivateRoute exact path="/" component={Home}  />
+        <Route exact path="/" component={Home}  />
         <PrivateRoute exact path="/logout" component={Logout}  />
         <Route exact path="/login" component={Login} />
         <Route exact path="/Register" component={Register} />

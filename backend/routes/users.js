@@ -7,8 +7,8 @@ const Users = require("../models/Users");
 const auth = require("../middleware/auth");
 
 
-//@route    POST /api/users
-//@desc     Register user
+//@route    POST /api/users/auth
+//@desc     Find Auth User
 //@access   Public
 router.get('/auth',auth,async (req,res)=>{
     try {
@@ -20,12 +20,24 @@ router.get('/auth',auth,async (req,res)=>{
         console.log(error.message);
         return res.status(500).json({error:'Server Error'})
     }
-})
+});
+
+
 //@route    POST /api/users
 //@desc     Register user
 //@access   Public
-router.post('/register',async (req,res)=>{
+router.post('/register',
+[check('name','Name is required').notEmpty(),
+check('email','Email is required').notEmpty(),
+check('email','Email is not Valid').isEmail(),
+check('password','Password is required').notEmpty(),
+check('password','Password should have 6 characters').isLength({min:6})] ,async (req,res)=>{
 
+    let errors = validationResult(req);
+
+    if(!errors.isEmpty()){
+        return res.status(400).json({error:errors.array()[0].msg});
+    }
     try {
     let {name,email,password} = req.body;
 
@@ -57,7 +69,7 @@ router.post('/register',async (req,res)=>{
 
     } catch (error) {
         console.log(error.message);
-        res.status(500).json({error:'Server Error'})
+        res.status(500).json({error:'Server Error'});
     }
 });
 
@@ -66,7 +78,17 @@ router.post('/register',async (req,res)=>{
 //@route    POST /api/users/login
 //@desc     user login
 //@access   Public
-router.post('/login',async (req,res)=>{
+router.post('/login',[
+check('email','Email is required').notEmpty(),
+check('email','Email is not Valid').isEmail(),
+check('password','Password is required').notEmpty()],async (req,res)=>{
+
+    let errors = validationResult(req);
+
+    if(!errors.isEmpty()){
+        return res.status(400).json({error:errors.array()[0].msg});
+    }
+    
     try {
         let {email,password} = req.body;
 
