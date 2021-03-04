@@ -9,4 +9,6 @@ export const REGISTER_FAIL = 'REGISTER_FAIL';
 export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
 export const LOGOUT = 'LOGOUT';
 export const POSTS_LOADING = 'POSTS_LOADING';
-export const POSTS_LOADAD = 'POSTS_LOADAD';
+export const POST_ADD = 'POST_ADD';
+export const POSTS_LOADED = 'POSTS_LOADED';
+export const POSTS_AUTH_LOADED = 'POSTS_AUTH_LOADED';

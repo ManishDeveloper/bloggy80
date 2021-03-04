@@ -30,8 +30,6 @@ const Login = ({loginUser,auth:{isAuthenticated,loading},alertMsg : {alertType,m
     return <Redirect to="/" />
   }
 
-  const manish = 'vikas';
-
   const loginForm = (<Form className="login-form" onSubmit={submitForm} >
   <Form.Group controlId="formBasicEmail">
     <Form.Label>Email address</Form.Label>

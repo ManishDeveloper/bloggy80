@@ -1,5 +1,6 @@
 import {USER_LOADING,REMOVE_ALERT, USER_LOADED,LOGIN_FAIL,LOGIN_SUCCESS,LOGOUT, AUTH_ERROR, SET_ALERT,REGISTER_SUCCESS} from '../types';
 import axios from 'axios';
+import {getLoginUserPost} from './post';
 import setAuthToken from '../../utils/setAuthToken';
 
 export const loadUser = () => async dispatch => {
@@ -41,6 +42,7 @@ export const loginUser = (email,password) => async dispatch => {
             localStorage.setItem('token',res.data.token);
 
         await dispatch(loadUser());
+        await dispatch(getLoginUserPost());
 
         await dispatch({
             type:REMOVE_ALERT
@@ -71,6 +73,7 @@ export const registerUser = (name,email,password) => async dispatch => {
         localStorage.setItem('token',res.data.token);
 
         await dispatch(loadUser());
+        await dispatch(getLoginUserPost());
 
         await dispatch({
             type:REMOVE_ALERT

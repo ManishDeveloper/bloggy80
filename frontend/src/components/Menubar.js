@@ -12,7 +12,7 @@ const Menubar = ({isAuthenticated}) => {
       <Nav.Link>Home</Nav.Link>
       </LinkContainer>
 
-      <LinkContainer to="/post">
+      <LinkContainer to="/dashboard">
       <Nav.Link>Dashboard</Nav.Link>
       </LinkContainer>
 

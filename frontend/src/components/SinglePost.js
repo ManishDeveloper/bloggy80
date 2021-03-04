@@ -17,7 +17,7 @@ const SinglePost = ({posts}) => {
                 return (
             <Row className="post-box" style={{'justifyContent':'center','margin':'40px auto','textAlign':'center'}}>
             <Col lg="6" className="post-image-box">
-            <Image className="post-image" src={`/images/${post.image}`} rounded />          
+            {post.image && <Image className="post-image" src={`/images/${post.image}`} rounded /> }         
                 <h1 className="post-title" style={{'marginTop':'10px'}}>{post.title}</h1>
                 <p className="post-description">{post.description}</p>
 

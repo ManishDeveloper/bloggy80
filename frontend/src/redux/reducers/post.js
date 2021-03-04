@@ -1,8 +1,9 @@
-import {POSTS_LOADAD,POSTS_LOADING} from '../types';
+import {POSTS_LOADED,POSTS_LOADING,POSTS_AUTH_LOADED,POST_ADD} from '../types';
 
 const initialState = {
     posts:[],
-    loading:false
+    authPost:[],
+    loading:true
 }
 
 const postReducer = (state=initialState,action) => {
@@ -14,7 +15,18 @@ const postReducer = (state=initialState,action) => {
                 ...state,
                 loading:true
             }
-        case POSTS_LOADAD:
+        case POSTS_AUTH_LOADED:
+            return {
+                ...state,
+                authPost:payload
+            }
+        case POST_ADD:
+            return {
+                ...state,
+                posts:[payload,...state.posts],
+                authPost:[payload,...state.authPost]
+            }
+        case POSTS_LOADED:
             return {
                 ...state,
                 posts:payload,

@@ -24,9 +24,19 @@ router.post('/create',[upload.single('image'),auth],async (req,res)=>{
     try {
         let {title,description} = req.body;
 
+        let newPosts;
+
+        if(req.file){
+
         let imageSlugify = slugify(req.file.filename,{replacement: '-'});
 
-        let newPosts = new Posts({user:req.user.id,title,description,image:imageSlugify});
+        newPosts = new Posts({user:req.user.id,title,description,image:imageSlugify});
+
+        } else {
+
+        newPosts = new Posts({user:req.user.id,title,description});
+
+        }
 
         await newPosts.save();
         return res.status(201).json(newPosts);
@@ -77,7 +87,7 @@ router.get('/:id', async (req,res)=>{
 });
 
 
-//@routes   get /api/posts/user-post
+//@routes   get /user/user-post
 //@desc     Get Login user post
 //@access   Private
 router.get('/user/user-post',auth, async (req,res)=>{
