@@ -3,6 +3,7 @@ const app = express();
 const cors = require("cors");
 const path = require("path");
 
+
 //connect db 
 require("./config/db");
 
@@ -16,10 +17,10 @@ app.use('/api/posts',require("./routes/posts"));
 
 //Deployment
 if(process.env.NODE_ENV === 'PRODUCTION'){
-    app.use(express.static(path.join(__dirname,'/frontend/build')));
+    app.use(express.static(path.join(__dirname,'../frontend/build')));
 
     app.get('*', (req,res)=>{
-        res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
+        res.sendFile(path.join(__dirname,'../', 'frontend', 'build', 'index.html'));
     });
 }
 
