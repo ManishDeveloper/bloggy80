@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken");
-require("dotenv").config({path:__dirname + `/../../.env`});
+require("dotenv").config();
 
 module.exports = function (req,res,next) {
     let token = req.header('x-auth-token');
