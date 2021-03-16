@@ -19,7 +19,7 @@ const UserPosts = ({posts}) => {
                 <Row className="post-box">
                 <Col lg="3" className="post-image-box">
                 <Link to={`/post/${post._id}`}>
-                    <Image className="post-image" src={`/images/${post.image}`} rounded />
+                    <Image className="post-image" src={post.image ? `/images/${post.image}`: `/images/no-image.jpg`} rounded />
                 </Link>
                 </Col>
                 <Col lg="9" className="post-detail-box">
