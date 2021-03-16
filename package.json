@@ -1,0 +1,24 @@
+{
+  "name": "bloggy80",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install && npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ManishDeveloper/bloggy80.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ManishDeveloper/bloggy80/issues"
+  },
+  "homepage": "https://github.com/ManishDeveloper/bloggy80#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0"
+  }
+}
