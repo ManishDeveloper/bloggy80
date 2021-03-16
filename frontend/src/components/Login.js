@@ -31,6 +31,7 @@ const Login = ({loginUser,auth:{isAuthenticated,loading},alertMsg : {alertType,m
   }
 
   const loginForm = (<Form className="login-form" onSubmit={submitForm} >
+    <h3>Login User</h3>
   <Form.Group controlId="formBasicEmail">
     <Form.Label>Email address</Form.Label>
     <Form.Control type="email" placeholder="Enter email" name="email" value={email} onChange={changeFields} />
